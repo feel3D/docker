@@ -6,15 +6,19 @@ services:
       context: ./docker/php
     volumes:
       - './src:/var/www/html'
+    restart: always
+    depends_on:
+      - mysql
 
   nginx:
     image: nginx:latest
-    ports:
-      - 8080:80
     volumes:
 #      for what?
 #      - './src:/var/www/html'
       - './docker/nginx/conf.d/:/etc/nginx/conf.d'
+    ports:
+      - 8080:80
+    restart: always
 
   mysql:
     image: mysql:8
@@ -22,3 +26,6 @@ services:
       - './docker/volume/mysql:/var/lib/mysql'
     environment:
       - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 127.0.0.1:63306:3306
+    restart: always

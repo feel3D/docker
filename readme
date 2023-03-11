@@ -3,5 +3,8 @@ docker-compose down -v
 docker-compose exec mysql bash
 mysql -uroot -proot
 show databases;
+create table users (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20) );
+insert into users (name) values ('Lev'),('Den'),('Sergo');
+
 //access token
 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
