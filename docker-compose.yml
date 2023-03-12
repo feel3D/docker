@@ -2,6 +2,7 @@ version: '3'
 
 services:
   php:
+    container_name: test_php
     build:
       context: ./docker/php
     volumes:
@@ -11,6 +12,7 @@ services:
       - mysql
 
   nginx:
+    container_name: test_nginx
     image: nginx:latest
     volumes:
 #      for what?
@@ -21,6 +23,7 @@ services:
     restart: always
 
   mysql:
+    container_name: test_mysql
     image: mysql:8
     volumes:
       - './docker/volume/mysql:/var/lib/mysql'
