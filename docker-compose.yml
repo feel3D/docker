@@ -8,6 +8,8 @@ services:
     volumes:
       - './src:/var/www/html'
     restart: always
+    environment:
+      NAME: TEST
     depends_on:
       - mysql
 
